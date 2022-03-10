@@ -1,5 +1,5 @@
 {
-  "name": "RetroChain",
+  "name": "retrochain",
   "version": "1.0.0",
   "description": "Retro Chain Protocol",
   "main": "index.js",
@@ -25,6 +25,7 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
+    "body-parser": "^1.19.2",
     "crypto-js": "^4.1.1",
     "express": "^4.17.3"
   }
