@@ -19,15 +19,15 @@ toString() {
 
     return `Wallet - 
             publicKey: ${this.publicKey.toString()}
-            balance: ${this.balance}
-            privateKey: ${this.keyPair.getPrivate('hex').toString()}  `
+            balance: ${this.balance}`
 
 }
 
+sign(dataHash) {
 
+return this.keyPair.sign(dataHash);
 
-
-
+}
 
 }
 

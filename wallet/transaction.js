@@ -1,3 +1,4 @@
+const { send } = require('express/lib/response');
 const ChainUtil = require('../chain-util');
 
 class Transaction {
@@ -26,8 +27,24 @@ transaction.outputs.push(...[
 {amount, address: recipient}
 ]);
 
+Transaction.signTranscation(transaction, senderWallet);
+
 return transaction;
 }
+
+
+static signTranscation(transaction, senderWallet) {
+
+
+    transaction.input = {
+        timestamp: Date.now(), 
+        amount: senderWallet.balance,
+        address: senderWallet.publicKey,
+        signature: senderWallet.sign(Chain.ChainUtil.hash(transaction.outputs))
+
+    }
+}
+
 
 }
 
