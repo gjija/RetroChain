@@ -1,5 +1,7 @@
 const EC = require('elliptic').ec;
-const uuidV1 = require('uuid/v1');
+const uuidV1 = require('uuid').v1;
+// import { v1 as uuidV1 } from 'uuid';
+
 const ec = new EC('secp256k1');
 
 
@@ -11,7 +13,9 @@ static genKeyPair() {
 }
 
 
-static uuidV1();
+static id() {
+    return uuidV1();
+}
 
 }
 
