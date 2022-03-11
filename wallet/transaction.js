@@ -40,7 +40,7 @@ static signTranscation(transaction, senderWallet) {
         timestamp: Date.now(), 
         amount: senderWallet.balance,
         address: senderWallet.publicKey,
-        signature: senderWallet.sign(Chain.ChainUtil.hash(transaction.outputs))
+        signature: senderWallet.sign(ChainUtil.hash(transaction.outputs))
 
     }
 }
