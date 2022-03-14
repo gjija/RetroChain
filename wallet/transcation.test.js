@@ -38,6 +38,19 @@ describe('Transcation', () => {
 
    });
 
+   it('validates a valid transaction', () => {
+
+    expect(Transaction.verifyTransaction(transaction)).toBe(true);
+
+
+   });
+   it('invalidates a corrup transcation', () => {
+
+    transaction.outputs[0].amount = 50000;
+    expect(Transaction.verifyTransaction(transaction)).toBe(false);
+
+   });
+
    describe('transcating with an amout that exceeds the balance', () => {
 
     beforeEach(() => {
