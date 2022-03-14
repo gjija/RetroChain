@@ -68,4 +68,32 @@ describe('Transcation', () => {
 
    });
 
+    describe('and updating a transaction', () => {
+
+        let nextAmount, nextRecipient;
+
+        beforeEach(() => {
+            nextAmount = 20;
+            nextRecipient = 'Gjija-Genesis';
+            transaction = transaction.update(wallet, nextRecipient, nextAmount);
+
+
+        });
+
+        it('subtracts the next amount from the senders outputs', () => {
+
+            expect(transaction.outputs.find(output => output.address === wallet.publicKey).amount)
+            .toEqual(wallet.balance - amount - nextAmount);
+
+        });
+
+        it('outputs an amount fo the next recipient', () => {
+
+            expect(transaction.outputs.find(output => output.address === nextRecipient).amount).toEqual(nextAmount);
+
+
+        });
+
+    });
+
 });
