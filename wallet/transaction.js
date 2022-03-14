@@ -1,5 +1,6 @@
 const { send } = require('express/lib/response');
 const ChainUtil = require('../chain-util');
+const Wallet = require('./index');
 
 class Transaction {
 
@@ -44,6 +45,15 @@ static signTranscation(transaction, senderWallet) {
         signature: senderWallet.sign(ChainUtil.hash(transaction.outputs))
 
     }
+}
+
+static verifyTransaction(transaction) {
+
+    return ChainUtil.verifySignature(
+        transaction.input.address,
+        transaction.input.signature,
+        ChainUtil.hash(transaction.outputs)
+    )
 }
 
 
