@@ -1,12 +1,12 @@
+const Wallet = require('./index');
 const Transaction = require('./transaction');
 const ChainUtil = require('../chain-util');
 
-const Wallet = require('./index');
 
 
 describe('Transcation', () => {
 
-    let transaction, wallet, recipient, amount;
+    let transaction, wallet, amount, recipient;
     beforeEach(() => {
 
         wallet = new Wallet();
@@ -18,12 +18,22 @@ describe('Transcation', () => {
 
    it('outputs the `amount` subtracted from the wallet balance', () => {
        expect(transaction.outputs.find(output => output.address === wallet.publicKey).amount).toEqual(wallet.balance - amount);
+
    });
 
 
    it('outputs the `amount` added to the recipient', () => {
 
-    expect(transaction.outputs.find(output => output.address === recipient).amount);
+    expect(transaction.outputs.find(output => output.address === recipient).amount).toEqual(amount);
+
+   });
+
+   it('inputs the balance of the wallet', () => {
+       
+
+        expect(transaction.input.amout).toEqual(Wallet.balance);
+       
+
 
    });
 

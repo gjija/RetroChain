@@ -22,6 +22,7 @@ if (amount > senderWallet.balance) {
     return;
 }
 
+
 transaction.outputs.push(...[
 { amount: senderWallet.balance - amount, address: senderWallet.publicKey },
 {amount, address: recipient}
