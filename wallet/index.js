@@ -1,5 +1,6 @@
 const ChainUtil = require('../chain-util');
 const { INTITAL_BALANCE } = require('../config');
+const Transaction = require('./transaction');
 
 
 
@@ -27,6 +28,33 @@ class Wallet {
 
         return this.keyPair.sign(dataHash);
 
+    }
+
+    createTransaction(recipient, amount, TransactionPool) {
+
+        if( amount > this.balance) {
+
+            console.log(`Amount: ${amount} exceeds current balanca ${this.balance}`);
+
+            
+        }
+
+        let transaction = TransactionPool.existingTransaction(this.publicKey);
+
+        if(transaction) {
+
+            transaction.update(this, recipient, amount);
+            
+
+        } else {
+
+            transaction = Transaction.newTransaction(this, recipient, amount);
+            TransactionPool.updateOrAddTransaction(transaction);
+
+
+        }
+
+        return transaction;
     }
 
 }

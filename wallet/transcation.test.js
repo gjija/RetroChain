@@ -51,7 +51,7 @@ describe('Transcation', () => {
 
     });
 
-    describe('transcating with an amout that exceeds the balance', () => {
+    describe('transcating with an amount that exceeds the balance', () => {
 
         beforeEach(() => {
 
