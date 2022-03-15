@@ -13,9 +13,10 @@ class P2pServer {
 
 constructor(blockchain, transactionPool) {
 
+    this.sockets = [];
     this.blockchain = blockchain;
     this.transactionPool = transactionPool;
-    this.sockets = [];
+    
 }
 
 listen() {
@@ -55,7 +56,20 @@ messageHandler(socket) {
     socket.on('message', message => {
 
         const data = JSON.parse(message);
-        this.blockchain.replaceChain(data);
+
+        switch(data.type) {
+
+            case MESSAGE_TYPES.chain:
+                this.blockchain.replaceChain(data.chain);
+                break;
+            case MESSAGE_TYPES.transaction:
+                this.transactionPool.updateOrAddTransaction(data.transaction);
+                break;
+            
+        }
+
+
+
 
     });
 }

@@ -1,4 +1,4 @@
-
+const Transaction = require('../wallet/transaction');
 
 class TransactionPool {
 
@@ -14,7 +14,7 @@ class TransactionPool {
 
         if(transactionWithId) {
 
-            this.transactions[this.transactions.indexOf(transactionWithId)] = transaction
+            this.transactions[this.transactions.indexOf(transactionWithId)] = transaction;
 
 
         } else {
