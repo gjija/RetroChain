@@ -5,29 +5,29 @@ const { INTITAL_BALANCE } = require('../config');
 
 class Wallet {
 
-constructor() {
+    constructor() {
 
-    this.balance = INTITAL_BALANCE;
-    this.keyPair = ChainUtil.genKeyPair();
-    this.publicKey = this.keyPair.getPublic().encode('hex');
-    
+        this.balance = INTITAL_BALANCE;
+        this.keyPair = ChainUtil.genKeyPair();
+        this.publicKey = this.keyPair.getPublic().encode('hex');
 
 
-}
 
-toString() {
+    }
 
-    return `Wallet - 
+    toString() {
+
+        return `Wallet - 
             publicKey: ${this.publicKey.toString()}
             balance: ${this.balance}`
 
-}
+    }
 
-sign(dataHash) {
+    sign(dataHash) {
 
-return this.keyPair.sign(dataHash);
+        return this.keyPair.sign(dataHash);
 
-}
+    }
 
 }
 

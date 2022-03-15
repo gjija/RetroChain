@@ -16,7 +16,7 @@ describe('Blockchain', () => {
     it('should add a new block', () => {
         const data = "gjija";
         bc.addBlock(data);
-        expect(bc.chain[bc.chain.length-1].data).toEqual(data);
+        expect(bc.chain[bc.chain.length - 1].data).toEqual(data);
     });
 
     it('Validates a valid chain', () => {
@@ -28,7 +28,7 @@ describe('Blockchain', () => {
     });
 
     it('Invalidates a chain with a corrupt genesis block', () => {
-        bc2.chain[0].data ='Wrong Data';
+        bc2.chain[0].data = 'Wrong Data';
         expect(bc.isValidChain(bc2.chain)).toBe(false);
     });
 
