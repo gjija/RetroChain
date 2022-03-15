@@ -12,14 +12,16 @@ class TransactionPool {
 
         let transactionWithId = this.transactions.find(t => t.id === transaction.id);
 
-        if(transactionWithId) {
+        if (transactionWithId) {
 
             this.transactions[this.transactions.indexOf(transactionWithId)] = transaction;
+
 
 
         } else {
 
             this.transactions.push(transaction);
+
         }
 
     }

@@ -75,14 +75,7 @@ messageHandler(socket) {
 }
 sendChain(socket) {
 
-    socket.send(JSON.stringify({
-        
-        
-        type: MESSAGE_TYPES.chain,
-        chain: this.blockchain.chain 
-    
-    
-    }));
+    socket.send(JSON.stringify({ type: MESSAGE_TYPES.chain, chain: this.blockchain.chain }));
 
 
 
@@ -90,12 +83,7 @@ sendChain(socket) {
 
 sendTransaction(socket, transaction) {
 
-socket.send(JSON.stringify({ 
-    
-    type: MESSAGE_TYPES.transaction,
-    transaction
-
-}));
+socket.send(JSON.stringify({ type: MESSAGE_TYPES.transaction, transaction }));
 
 }
 
@@ -109,7 +97,7 @@ this.sockets.forEach(socket => this.sendChain(socket));
 
 broadcastTransaction(transaction){
 
-    this.sockets.forEach(socket => this.sendTransaction(socket));
+    this.sockets.forEach(socket => this.sendTransaction(socket, transaction));
 
 
 

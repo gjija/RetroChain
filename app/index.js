@@ -49,4 +49,4 @@ app.post('/transact', (req, res) =>{
 app.listen(HTTP_PORT, () => console.log(`Listening on port ${HTTP_PORT}`));
 p2pServer.listen();
 
-//HTTP_PORT=3002 P2P_PORT=5002 PEERS=ws://localhost:5001 npm run dev
+//HTTP_PORT=3005 P2P_PORT=5005 PEERS=ws://localhost:5001 npm run dev
